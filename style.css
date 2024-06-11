@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #0b0b0a;
+}
+
+body {
+  background-color: #f9f9f8;
+}
+
+.container,
+.board-wrapper,
+.block-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.board-wrapper,
+.container {
+  flex-direction: column;
+}
+
+.container {
+  gap: 20px;
+  height: 100vh;
+}
+
+.block-item {
+  width: 100px;
+  height: 100px;
+  background-color: #919072;
+  border-radius: 10px;
+}
