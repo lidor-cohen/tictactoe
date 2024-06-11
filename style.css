@@ -45,6 +45,10 @@ h1 {
   font-size: 3em;
 }
 
+h3 {
+  text-align: center;
+}
+
 .cell {
   width: 100px;
   height: 100px;
@@ -57,6 +61,7 @@ h1 {
 
   font-size: 50px;
   font-family: cursive;
+  user-select: none;
 }
 
 .actions-container {
