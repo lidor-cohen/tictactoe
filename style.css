@@ -16,11 +16,10 @@ body {
   background-color: #f9f9f8;
 }
 
-.board-wrapper,
-.block-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.board-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
   gap: 5px;
 }
 
@@ -39,11 +38,25 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.block-item {
+h1 {
+  font-family: cursive;
+  text-align: center;
+  font-weight: 900;
+  font-size: 3em;
+}
+
+.cell {
   width: 100px;
   height: 100px;
   background-color: var(--primary-color);
   border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 50px;
+  font-family: cursive;
 }
 
 .actions-container {

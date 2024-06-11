@@ -1,9 +1,5 @@
 const Gameboard = (() => {
-  this.gameboard = [
-    ["", "", ""],
-    ["", "X", ""],
-    ["O", "", ""],
-  ];
+  this.gameboard = ["", "", "", "", "", "", "", "", ""];
 
   this.init = () => {
     this.cacheDom();
@@ -12,20 +8,13 @@ const Gameboard = (() => {
 
   this.cacheDom = () => {
     this.boardWrapper = document.querySelector(".board-wrapper");
+    this.boardItems = document.querySelectorAll(".cell");
   };
 
   this.render = () => {
-    for (let i = 0; i < gameboard.length; i++) {
-      for (let j = 0; j < gameboard[i].length; j++) {
-        const block = this.gameboard[i][j];
-
-        if (block === "") {
-          console.log(" ");
-        } else {
-          console.log(`${block}`);
-        }
-      }
-    }
+    boardItems.forEach((data, index) => {
+      data.textContent = gameboard[index];
+    });
   };
 
   return { init };
