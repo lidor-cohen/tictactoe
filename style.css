@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #919072;
+  --secondary-color: #c4c3ab;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,7 +16,6 @@ body {
   background-color: #f9f9f8;
 }
 
-.container,
 .board-wrapper,
 .block-row {
   display: flex;
@@ -20,19 +24,40 @@ body {
   gap: 5px;
 }
 
-.board-wrapper,
-.container {
+.board-wrapper {
   flex-direction: column;
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  height: 100vh;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .block-item {
   width: 100px;
   height: 100px;
-  background-color: #919072;
+  background-color: var(--primary-color);
   border-radius: 10px;
+}
+
+.actions-container {
+  width: 100%;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+
+  background-color: var(--secondary-color);
+  color: black;
+  font-weight: 700;
 }
