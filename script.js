@@ -20,10 +20,14 @@ const Gameboard = (() => {
   };
 
   this.clickCell = (e) => {
-    statusText.textContent = `${GameController.getPlayerTurn().sign}'s Turn`;
-    let sign = GameController.changeTurn().sign;
-    e.srcElement.textContent = sign;
+    let index = [...boardWrapper.children].indexOf(e.srcElement);
+    let sign = GameController.getPlayerTurn().sign;
+
     e.srcElement.removeEventListener("click", clickCell);
+
+    this.gameboard[index] = sign;
+    GameController.changeTurn();
+    this.render();
   };
 
   this.render = () => {
@@ -31,12 +35,11 @@ const Gameboard = (() => {
       data.textContent = gameboard[index];
     });
 
-    statusText.textContent = "X's Turn";
+    statusText.textContent = `${GameController.getPlayerTurn().sign}'s Turn`;
   };
 
   return { init };
 })();
-
 const GameController = (() => {
   this.turn = 1;
 
@@ -50,11 +53,9 @@ const GameController = (() => {
   this.changeTurn = () => {
     if (turn === 1) {
       turn = 2;
-      console.log(this.player2);
       return this.player2;
     } else {
       turn = 1;
-      console.log(this.player1);
       return this.player1;
     }
   };
