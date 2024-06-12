@@ -2,6 +2,8 @@ const Gameboard = (() => {
   this.gameboard = ["", "", "", "", "", "", "", "", ""];
 
   this.init = () => {
+    this.gameboard = ["", "", "", "", "", "", "", "", ""];
+
     this.cacheDom();
     this.bindEvents();
     this.render();
@@ -27,7 +29,48 @@ const Gameboard = (() => {
 
     this.gameboard[index] = sign;
     GameController.changeTurn();
+    this.winnerCheck();
     this.render();
+  };
+
+  this.winnerCheck = () => {
+    let linearWins = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+    ];
+    let diagonalWins = [
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    let winConditions = linearWins.concat(diagonalWins);
+    let winChecker = (sign) => {
+      for (let i = 0; i < winConditions.length; i++) {
+        let flag = true;
+
+        for (let j = 0; j < 3; j++) {
+          let gameboardSelector = this.gameboard[winConditions[i][j]];
+
+          if (gameboardSelector !== sign) {
+            flag = false;
+            break;
+          }
+        }
+
+        if (flag) {
+          console.log("WINNER");
+          init();
+        }
+      }
+    };
+
+    // CHECK FOR "O" WINNER
+    winChecker("O");
+    winChecker("X");
   };
 
   this.render = () => {
@@ -40,6 +83,7 @@ const Gameboard = (() => {
 
   return { init };
 })();
+
 const GameController = (() => {
   this.turn = 1;
 
