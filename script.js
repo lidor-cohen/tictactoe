@@ -3,8 +3,8 @@ const Gameboard = (() => {
 
   this.init = () => {
     this.gameboard = ["", "", "", "", "", "", "", "", ""];
-
     this.cacheDom();
+    this.modal.close();
     this.bindEvents();
     this.render();
   };
@@ -13,11 +13,18 @@ const Gameboard = (() => {
     this.boardWrapper = document.querySelector(".board-wrapper");
     this.boardItems = document.querySelectorAll(".cell");
     this.statusText = document.querySelector("#status-text");
+    this.modal = document.querySelector("#result-modal");
+    this.modalResultText = document.querySelector("#winner-text");
+    this.resetButtons = document.querySelectorAll(".reset-btn");
   };
 
   this.bindEvents = () => {
     this.boardItems.forEach((element) => {
       element.addEventListener("click", clickCell, false);
+    });
+
+    this.resetButtons.forEach((element) => {
+      element.addEventListener("click", init, false);
     });
   };
 
@@ -62,8 +69,8 @@ const Gameboard = (() => {
         }
 
         if (flag) {
-          console.log("WINNER");
-          init();
+          modalResultText.textContent = `${sign} is the Winner!`;
+          modal.showModal();
         }
       }
     };
@@ -72,6 +79,8 @@ const Gameboard = (() => {
     winChecker("O");
     winChecker("X");
   };
+
+  this.displayWinner = () => {};
 
   this.render = () => {
     boardItems.forEach((data, index) => {
