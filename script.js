@@ -71,6 +71,9 @@ const Gameboard = (() => {
         if (flag) {
           modalResultText.textContent = `${sign} is the Winner!`;
           modal.showModal();
+        } else if (gameboard.every((cellContent) => cellContent !== "")) {
+          modalResultText.textContent = `DRAW!`;
+          modal.showModal();
         }
       }
     };
